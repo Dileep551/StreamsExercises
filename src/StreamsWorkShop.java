@@ -6,16 +6,16 @@ import java.util.stream.Collectors;
 
 public class StreamsWorkShop {
 
-    public static List<UserStory> findUserStoriesInSprint(List<UserStory> userStories){
+    public static List<UserStory> findUserStoriesInSprint(List<UserStory> userStories) {
 
         return userStories.stream()
-                .filter(s->s.sprint() == 11)
+                .filter(s -> s.sprint() == 11)
                 .sorted(Comparator.comparing(UserStory::points))
                 .collect(Collectors.toList());
 
     }
 
-    public static List<String> uniqePodsDeveloperWorks(List<Developer> developers){
+    public static List<String> uniqePodsDeveloperWorks(List<Developer> developers) {
 
         return developers.stream()
                 .map(Developer::pod)
@@ -24,44 +24,44 @@ public class StreamsWorkShop {
                 .collect(Collectors.toList());
     }
 
-    public static List<Developer> listOfDevelopersinPod(List<Developer> developers){
+    public static List<Developer> listOfDevelopersinPod(List<Developer> developers) {
 
         return developers.stream()
-                .filter(s->s.pod().equals("Lotus"))
+                .filter(s -> s.pod().equals("Lotus"))
                 .sorted(Comparator.comparing(Developer::name))
                 .collect(Collectors.toList());
 
     }
 
-    public static String stringOfDeveloperNames(List<Developer> developers){
+    public static String stringOfDeveloperNames(List<Developer> developers) {
 
         return developers.stream()
                 .sorted(Comparator.comparing(Developer::name))
                 .map(Developer::name)
-                .reduce("",String::concat);
+                .reduce("", String::concat);
 
 
     }
 
-    public static boolean isAnyDevelopersInMcLaren(List<Developer> developers){
+    public static boolean isAnyDevelopersInMcLaren(List<Developer> developers) {
 
         return developers.stream()
-                .noneMatch(s->s.name().equals("McLaren"));
+                .noneMatch(s -> s.name().equals("McLaren"));
 
     }
 
 
-    public static Integer sumOfAllUserStories(List<UserStory> userStories){
+    public static Integer sumOfAllUserStories(List<UserStory> userStories) {
 
-        return  userStories.stream()
-                .filter(s->s.developer().pod().equals("Lotus"))
+        return userStories.stream()
+                .filter(s -> s.developer().pod().equals("Lotus"))
                 .map(UserStory::points)
-                .reduce(0,Integer::sum);
+                .reduce(0, Integer::sum);
 
 
     }
 
-    public static Optional<Integer> getHighestPointsOfStories(List<UserStory> userStories){
+    public static Optional<Integer> getHighestPointsOfStories(List<UserStory> userStories) {
 
 
         return userStories.stream()
@@ -69,26 +69,16 @@ public class StreamsWorkShop {
                 .max(Comparator.naturalOrder());
 
 
-
     }
 
-    public static Optional<UserStory> getSmallestPointedUserStory(List<UserStory> userStories){
+    public static Optional<UserStory> getSmallestPointedUserStory(List<UserStory> userStories) {
 
 
         return userStories.stream()
                 .min(Comparator.comparing(UserStory::points));
 
 
-
     }
-
-
-
-
-
-
-
-
 
 
 }

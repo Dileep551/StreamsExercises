@@ -1,0 +1,1 @@
+public record UserStory1(Developer1 developer1, int sprint, int points) {}
